@@ -21,7 +21,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.provider'])
     })
 
     .config(["couchbaseProvider", function(couchbaseProvider) {
-        couchbaseProvider.setDbName('db2');
+        couchbaseProvider.setDbName('db1');
+        couchbaseProvider.setDevUrl('http://localhost:8081/');
     }])
     .config(function ($stateProvider, $urlRouterProvider) {
         // Ionic uses AngularUI Router which uses the concept of states

@@ -1,7 +1,8 @@
 angular.module('starter.provider', [])
 
     .provider('couchbase', function () {
-        var dbName;
+        var dbName,
+            devUrl;
         function Couchbase($http) {
             var url,
                 db,
@@ -37,6 +38,10 @@ angular.module('starter.provider', [])
             }
         };
 
+        this.setDevUrl = function(value) {
+            devUrl = value;
+        }
+
         this.setDbName = function(value) {
             dbName = value;
         };
@@ -57,8 +62,8 @@ angular.module('starter.provider', [])
                             couchbase.createDb();
                         });
                 } else {
-                    couchbase.setUrl('http://localhost:8080/')
-                    couchbase.setDbName(dbName)
+                    couchbase.setUrl(devUrl);
+                    couchbase.setDbName(dbName);
                     couchbase.createDb();
                 }
 
