@@ -1,15 +1,27 @@
 angular.module('starter.controllers', [])
+    .controller('DashCtrl', function ($scope, couchbase) {
+        $scope.user = {
+        };
 
-.controller('DashCtrl', function($scope) {
-})
+        $scope.save = function () {
+            couchbase.put($scope.user.name, $scope.user);
+        }
+    })
 
-.controller('FriendsCtrl', function($scope, Friends) {
-  $scope.friends = Friends.all();
-})
+    .controller('CarsCtrl', function ($scope, couchbase) {
+        couchbase.get('_all_docs').success(
+            function (data) {
+                $scope.test = angular.fromJson(data);
+            }
+        );
+    })
 
-.controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
-  $scope.friend = Friends.get($stateParams.friendId);
-})
+    .controller('CarDetailCtrl', function ($scope, $stateParams, couchbase) {
+        couchbase.get($stateParams.carId).success(function (data) {
+            $scope.user = angular.fromJson(data);
+        });
+    })
 
-.controller('AccountCtrl', function($scope) {
-});
+    .controller('SettingsCtrl', function ($scope, couchbase) {
+        $scope.db = couchbase;
+    });

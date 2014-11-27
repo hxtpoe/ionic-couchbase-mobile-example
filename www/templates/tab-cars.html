@@ -1,0 +1,9 @@
+<ion-view title="get all">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="row in test.rows" type="item-text-wrap" ng-href="#/tab/car/{{row.key}}">
+        {{row.key}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
