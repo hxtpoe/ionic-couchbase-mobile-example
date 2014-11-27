@@ -1,5 +1,22 @@
-<ion-view title="Dashboard">
-  <ion-content class="padding">
-    <h1>Dash</h1>
-  </ion-content>
+<ion-view title="My Page">
+    <ion-content>
+        <label class="item item-input">
+            <span  class="input-label">Key</span>
+            <input ng-model="user.name" type="text">
+        </label>
+        <label class="item item-input">
+            <span  class="input-label">Value</span>
+            <input ng-model="user.number" type="text">
+        </label>
+        <div class="range">
+            <i class="icon ion-volume-low"></i>
+            <input ng-model="user.range" type="range" name="volume">
+            <i class="icon ion-volume-high"></i>
+        </div>
+
+        <button ng-click="save()" class="button button-balanced">
+            Save
+        </button>
+    </ion-content>
 </ion-view>
+

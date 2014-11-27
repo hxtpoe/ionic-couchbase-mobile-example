@@ -1,0 +1,13 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "CentosCouchdb"
+  config.vm.box_url = "http://inzynieria.it/CentosCouchdb.box"
+  config.vm.network :forwarded_port, guest: 80, host: 8081  
+  config.vm.network :forwarded_port, guest: 5984, host: 5985
+  
+  config.vm.provider :virtualbox do |vb|
+    vb.customize ["modifyvm", :id, "--memory", "512"]
+  end
+end
